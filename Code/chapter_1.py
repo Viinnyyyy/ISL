@@ -39,9 +39,32 @@ plt.show()
 
 college[['Top10perc', 'Elite']].head()
 
-
 # To show
-fig, ax = subplots(figsize=(8, 8))
-plt.subplots(2, 2)
-college.hist('Apps', color='red', bins=10, ax=ax)
+fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2)
+ax0 = college.plot.hist(column=['Personal'])
+ax1 = college.plot.hist(column=['Books'])
+ax2 = college.plot.hist(column=['Outstate'])
+ax3 = college.plot.hist(column=['Expend'])
+
+fig.tight_layout()
 plt.show()
+
+# This one works finally
+fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2)
+ax0.hist(x=college['Personal'])
+ax0.set_title('Histogram of Personal')
+
+ax1.hist(x=college['Books'])
+ax1.set_title('Histogram of Books')
+
+ax2.hist(x=college['Outstate'])
+ax2.set_title('Histogram of Outstate')
+
+ax3.hist(x=college['Expend'])
+ax3.set_title('Histogram of Expend')
+
+fig.tight_layout()
+plt.show()
+
+
+# Brief Summary of the dataset
