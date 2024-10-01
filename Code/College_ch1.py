@@ -67,4 +67,5 @@ fig.tight_layout()
 plt.show()
 
 
-# Brief Summary of the dataset
+#  Brief Summary of the dataset
+#  The dataset gives an overview of the dataset and it's variables

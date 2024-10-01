@@ -15,3 +15,16 @@ Auto_nan.sum()  # The 'horsepower' column is adding all the characters and it se
 Auto_nan.dtypes  # horsepower is definitely an object class
 
 # Converts the column to integer after changing '?' to Nan and removing it
+Auto_nan = pd.read_csv(
+    "/Users/mac/Documents/ISL_with_Python/ISL/ALL_CSV_FILES/Auto.data", na_values=['?'], sep='\\s+')
+Auto = Auto_nan.dropna()
+Auto_nan.isna().sum()
+
+Auto.shape, Auto_nan.shape
+
+# It is important to note that when working with .csv files, you show the na_values as '?' as opposed
+# to using the ['?'] for the .data
+Auto_nan = pd.read_csv(
+    "/Users/mac/Documents/ISL_with_Python/ISL/ALL_CSV_FILES/Auto.csv", na_values='?', sep=',')
+Auto = Auto_nan.dropna()
+Auto_nan.isna().sum()
