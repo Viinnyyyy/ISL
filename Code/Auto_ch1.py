@@ -124,4 +124,40 @@ columns = [range_acceleration, range_no10_85_acceleration, range_displacement, r
 plt.bar(labels, columns)
 ax.tick_params(axis='x', rotation=87)
 plt.show()
-plt.bar()
+
+# Plots the mean between the normal dataset and when the columns have been removed
+fig, ax = plt.subplots()
+labels = ["Normal acceleration", "No 10-85 acceleration rows", "Normal displacement", "No 10-85 displacement rows",
+          "Normal horsepower", "No 10-85 horsepower rows", "Normal weight", "No 10-85 weight rows"]
+columns = [mean_acceleration, mean_no10_85_acceleration, mean_displacement, mean_no10_85_displacement,
+           mean_horsepower, mean_no10_85_horsepower, mean_weight, mean_no10_85_weight]
+plt.bar(labels, columns)
+ax.tick_params(axis='x', rotation=87)
+plt.show()
+
+# Plots the std between the normal dataset and when the columns have been removed
+fig, ax = plt.subplots()
+labels = ["Normal acceleration", "No 10-85 acceleration rows", "Normal displacement", "No 10-85 displacement rows",
+          "Normal horsepower", "No 10-85 horsepower rows", "Normal weight", "No 10-85 weight rows"]
+columns = [std_acceleration, std_no10_85_acceleration, std_displacement, std_no10_85_displacement,
+           std_horsepower, std_no10_85_horsepower, std_weight, std_no10_85_weight]
+plt.bar(labels, columns)
+ax.tick_params(axis='x', rotation=87)
+plt.show()
+
+# From the visualization in the plot, the range, standard deviation and the mean did not change significantly even though rows had been removed
+# Plotting a scatterplot to find the relationship between the columns
+pd.plotting.scatter_matrix(Auto)
+plt.show()
+
+# From the plot shown in the scatter_matrix above, few findings can be deducted:
+# 1. As earlier said, the qualitative columns are 'origin', 'year and 'cylinders'
+# 2. The quantitative columns are the 'acceleration', 'displacement', 'horsepower', 'weight'
+# 3. mpg has an inverse relationship with displacement, horsepower and weight
+# 4. Displacement shows a direct relationship with weight and horsepower but a slightly
+# inverse relationship with horsepower
+# 5. horsepower shows an inverse relationship with acceleration and increases with weight.
+
+
+# Should we want to predict the mpg, some predictors will be very useful:
+# displacement, horsepower and weight as they all show the strongest trend with mpg

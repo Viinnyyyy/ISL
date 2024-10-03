@@ -186,6 +186,7 @@ Auto.head()
 
 
 Auto2 = pd.read_csv(
+    # Dealing with .data files
     "/Users/mac/Documents/ISL_with_Python/ALL_CSV_FILES/Auto.data", sep='\\s+')
 Auto2
 
@@ -310,7 +311,7 @@ fig, ax = subplots(figsize=(8, 8))
 Auto.hist('mpg', color='red', bins=12, ax=ax)
 plt.show()
 
-pd.plotting.scatter_matrix(Auto)
+pd.plottincatter_matrix(Auto)
 plt.show()
 
 pd.plotting.scatter_matrix(Auto[['mpg', 'displacement', 'weight']])
