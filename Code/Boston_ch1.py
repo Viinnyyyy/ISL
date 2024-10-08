@@ -62,13 +62,19 @@ plt.show()
 
 # Crimerate count around the charles river
 Boston2.chas[Boston2['chas'] == 0].value_counts()
+Boston2.chas[Boston2['chas'] == 0]
 # takes about 470 of the 505 datasets.
 
 
-# select the columns that has the maximum cime, ptratio and tax rates
+# select the rows that has the maximum crime, ptratio and tax rates
 Boston2[Boston2.crim == Boston2.crim.max()]
 Boston2[Boston2.ptratio == Boston2.ptratio.max()]
 Boston2[Boston2.tax == Boston2.tax.max()]
+
+# select the rows that has the minimum crime, ptratio and tax rates
+Boston2[Boston2.crim == Boston2.crim.min()]
+Boston2[Boston2.ptratio == Boston2.ptratio.min()]
+Boston2[Boston2.tax == Boston2.tax.min()]
 
 Boston2.medv.min()
 Boston2.columns[Boston2['medv'].min()]
@@ -78,7 +84,33 @@ Boston2.head()
 Boston2.ptratio.median()  # the median pupil-teacher ratio was 19:1
 
 # select the columns that has the minimum medv
-lowest_medv = Boston2[Boston2.medv == Boston2.medv.min()]
-highest_medv = Boston2[Boston2.medv == Boston2.medv.max()]
-median_medv = Boston2[Boston2.medv == Boston2.medv.median()]
-pd.diff()
+Boston2[Boston2.medv == Boston2.medv.min()]
+Boston2[Boston2.crim == Boston2.crim.min()]
+Boston2[Boston2.medv == Boston2.medv.max()]
+Boston2[Boston2.crim == Boston2.crim.min()]
+Boston2[Boston2.medv == Boston2.medv.median()]
+Boston2[Boston2.crim == Boston2.crim.min()]
+
+#  The lowest medv has a high crime rate and the column with the row with the lowest crime rate
+#  has a high medv. The highest medv from the dataset has the indus and tax column directly
+#  reducing the crime rate.
+#  zn also plays a role too as an increase in zn leads to reduced crime rate.
+#
+# select the columns that has the minimum medv and compare it to the maximum crime rate
+Boston2[Boston2.medv == Boston2.medv.min()]
+Boston2[Boston2.crim == Boston2.crim.max()]
+Boston2[Boston2.medv == Boston2.medv.max()]
+Boston2[Boston2.crim == Boston2.crim.max()]
+Boston2[Boston2.medv == Boston2.medv.median()]
+Boston2[Boston2.crim == Boston2.crim.max()]
+
+
+# Finding the rows that have rooms of 7
+
+Boston2[Boston2.rm >= 7]
+Boston2.crim[Boston2.rm >= 7].min()
+# Finding the rows that have rooms of 8
+
+Boston2[Boston2.rm >= 8]
+Boston2.crim[Boston2.rm >= 8].unique()
+# The rooms do not seem to give any form of information concerning the workings of the crime rate
