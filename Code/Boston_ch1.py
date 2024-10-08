@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import subplots
+# import statistics as st
 
 Boston3 = pd.read_csv(
     '/Users/mac/Documents/ISL_with_Python/ISL/ALL_CSV_FILES/Boston.csv')
@@ -60,5 +61,24 @@ plt.show()
 # There is increased crimerate where there is no charles river.
 
 # Crimerate count around the charles river
-# takes about 470 of the 505 datasets.
 Boston2.chas[Boston2['chas'] == 0].value_counts()
+# takes about 470 of the 505 datasets.
+
+
+# select the columns that has the maximum cime, ptratio and tax rates
+Boston2[Boston2.crim == Boston2.crim.max()]
+Boston2[Boston2.ptratio == Boston2.ptratio.max()]
+Boston2[Boston2.tax == Boston2.tax.max()]
+
+Boston2.medv.min()
+Boston2.columns[Boston2['medv'].min()]
+Boston2.columns(Boston2.isin(Boston2.medv.min()).any())
+Boston2.head()
+
+Boston2.ptratio.median()  # the median pupil-teacher ratio was 19:1
+
+# select the columns that has the minimum medv
+lowest_medv = Boston2[Boston2.medv == Boston2.medv.min()]
+highest_medv = Boston2[Boston2.medv == Boston2.medv.max()]
+median_medv = Boston2[Boston2.medv == Boston2.medv.median()]
+pd.diff()
